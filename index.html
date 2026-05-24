@@ -38,7 +38,6 @@
       ctx.lineTo(1300, 100);
       ctx.stroke();
 
-
       ctx.font = "30px Arial";
       ["D", "Eb", "E", "F", "Gb", "G", "Ab", "A", "Bb", "B", "C", "Db", "D"].forEach((c, i) => {
         ctx.fillText(c, 90 + i * 100, 90);
@@ -78,41 +77,15 @@
       });
       ctx.fill();
 
-      // 3
-      ctx.strokeStyle = "#f00";
-      ctx.beginPath();
-      HUNDOTTE.forEach((c, i) => {
-        ctx.moveTo(100 + (i * 100 + c + 1200 * Math.log2(3)) % 1200, 200 + i * (100 / 3));
-        ctx.lineTo(100 + (i * 100 + c + 1200 * Math.log2(3)) % 1200, 200 + (i + 1) * (100 / 3));
+      [[3, "#f00"], [5, "#0f0"], [7, "#f0f"], [11, "#fb0"]].forEach((p) => {
+        ctx.strokeStyle = p[1];
+        ctx.beginPath();
+        HUNDOTTE.forEach((c, i) => {
+          ctx.moveTo(100 + (i * 100 + c + 1200 * Math.log2(p[0])) % 1200, 200 + i * (100 / 3));
+          ctx.lineTo(100 + (i * 100 + c + 1200 * Math.log2(p[0])) % 1200, 200 + (i + 1) * (100 / 3));
+        });
+        ctx.stroke();
       });
-      ctx.stroke();
-
-      // 5
-      ctx.strokeStyle = "#0f0";
-      ctx.beginPath();
-      HUNDOTTE.forEach((c, i) => {
-        ctx.moveTo(100 + (i * 100 + c + 1200 * Math.log2(5)) % 1200, 200 + i * (100 / 3));
-        ctx.lineTo(100 + (i * 100 + c + 1200 * Math.log2(5)) % 1200, 200 + (i + 1) * (100 / 3));
-      });
-      ctx.stroke();
-
-      // 7
-      ctx.strokeStyle = "#f0f";
-      ctx.beginPath();
-      HUNDOTTE.forEach((c, i) => {
-        ctx.moveTo(100 + (i * 100 + c + 1200 * Math.log2(7)) % 1200, 200 + i * (100 / 3));
-        ctx.lineTo(100 + (i * 100 + c + 1200 * Math.log2(7)) % 1200, 200 + (i + 1) * (100 / 3));
-      });
-      ctx.stroke();
-
-      // 11
-      ctx.strokeStyle = "#fb0";
-      ctx.beginPath();
-      HUNDOTTE.forEach((c, i) => {
-        ctx.moveTo(100 + (i * 100 + c + 1200 * Math.log2(11)) % 1200, 200 + i * (100 / 3));
-        ctx.lineTo(100 + (i * 100 + c + 1200 * Math.log2(11)) % 1200, 200 + (i + 1) * (100 / 3));
-      });
-      ctx.stroke();
 
       // const step = parseInt(document.getElementById("overtone-step").value);
       for (let step = 0; step < 12; step++) {
